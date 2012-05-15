@@ -1,0 +1,20 @@
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\ApplicationIcon.png
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\Background.png
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\WP7.VideoScanZXing.SampleApp.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\WP7.VideoScanZXing.SampleApp.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\AppManifest.xaml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\WP7.VideoScanZXing.SampleApp.xap
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\Silverlight_ZXing_Core.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\WP7.ScanBarCode.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\WP7.ScanBarCode.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Release\App.g.i.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Release\MainPage.g.i.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Release\WP7.VideoScanZXing.SampleApp.g.resources
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Release\WP7.VideoScanZXing.SampleApp.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Release\WP7.VideoScanZXing.SampleApp.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Release\XapCacheFile.xml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\Microsoft.Phone.Controls.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Release\Microsoft.Phone.Controls.xml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Release\PanoramaPage1.g.i.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Release\Joining Game.g.i.cs

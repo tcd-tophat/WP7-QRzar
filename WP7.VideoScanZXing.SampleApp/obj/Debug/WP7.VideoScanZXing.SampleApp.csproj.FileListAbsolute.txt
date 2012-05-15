@@ -1,0 +1,16 @@
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.csprojResolveAssemblyReference.cache
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\obj\Debug\App.g.i.cs
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\obj\Debug\MainPage.g.i.cs
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.g.resources
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\Bin\Debug\ApplicationIcon.png
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\Bin\Debug\Background.png
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.dll
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.pdb
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\Bin\Debug\AppManifest.xaml
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.xap
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\Bin\Debug\Silverlight_ZXing_Core.dll
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.ScanBarCode.dll
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.ScanBarCode.pdb
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.dll
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.pdb
+C:\StepheVaio\Projets\ScanBarCode\WP7.VideoScanZXing\WP7.VideoScanZXing.SampleApp\obj\Debug\XapCacheFile.xml

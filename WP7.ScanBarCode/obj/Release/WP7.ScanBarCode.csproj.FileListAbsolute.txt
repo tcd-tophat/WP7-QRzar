@@ -1,0 +1,10 @@
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\Bin\Release\WP7.ScanBarCode.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\Bin\Release\WP7.ScanBarCode.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\Bin\Release\Microsoft.Phone.Controls.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\Bin\Release\Silverlight_ZXing_Core.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\Bin\Release\Microsoft.Phone.Controls.xml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\obj\Release\BarCode.g.i.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\obj\Release\WP7.ScanBarCode.g.resources
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\obj\Release\WP7.ScanBarCode.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.ScanBarCode\obj\Release\WP7.ScanBarCode.pdb

@@ -1,0 +1,20 @@
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\Background.png
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\ApplicationIcon.png
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\AppManifest.xaml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.xap
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\Silverlight_ZXing_Core.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.ScanBarCode.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.ScanBarCode.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\App.g.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\MainPage.g.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\PanoramaPage1.g.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.g.resources
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\XapCacheFile.xml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\Joining Game.g.cs

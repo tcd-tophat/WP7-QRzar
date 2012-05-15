@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010 Express for Windows Phone
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRzar", "QRzar\QRzar.csproj", "{B06BA6DB-A5D5-4B8F-87EB-3C8E5F542C84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP7.ScanBarCode", "WP7.ScanBarCode\WP7.ScanBarCode.csproj", "{A329E1A3-9CFF-4A70-B8E8-9D3B72920B46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRzar", "WP7.VideoScanZXing.SampleApp\QRzar.csproj", "{7AB37838-942F-44BF-86FF-5487AF47D4DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +11,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B06BA6DB-A5D5-4B8F-87EB-3C8E5F542C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B06BA6DB-A5D5-4B8F-87EB-3C8E5F542C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B06BA6DB-A5D5-4B8F-87EB-3C8E5F542C84}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{B06BA6DB-A5D5-4B8F-87EB-3C8E5F542C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B06BA6DB-A5D5-4B8F-87EB-3C8E5F542C84}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B06BA6DB-A5D5-4B8F-87EB-3C8E5F542C84}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A329E1A3-9CFF-4A70-B8E8-9D3B72920B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A329E1A3-9CFF-4A70-B8E8-9D3B72920B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A329E1A3-9CFF-4A70-B8E8-9D3B72920B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A329E1A3-9CFF-4A70-B8E8-9D3B72920B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AB37838-942F-44BF-86FF-5487AF47D4DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AB37838-942F-44BF-86FF-5487AF47D4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AB37838-942F-44BF-86FF-5487AF47D4DD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7AB37838-942F-44BF-86FF-5487AF47D4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AB37838-942F-44BF-86FF-5487AF47D4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AB37838-942F-44BF-86FF-5487AF47D4DD}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
