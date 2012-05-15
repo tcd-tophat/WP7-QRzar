@@ -67,6 +67,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bar Code\BarCodeManager.cs" />
+    <Compile Include="Bar Code\BarCode.xaml.cs">
+      <DependentUpon>BarCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bar Code\VideoScanException.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -98,6 +103,10 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Bar Code\BarCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,12 +119,6 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WP7.ScanBarCode\WP7.ScanBarCode.csproj">
-      <Project>{A329E1A3-9CFF-4A70-B8E8-9D3B72920B46}</Project>
-      <Name>WP7.ScanBarCode</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataStore\" />

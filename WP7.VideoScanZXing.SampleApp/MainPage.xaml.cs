@@ -25,7 +25,7 @@ namespace WP7.VideoScanZXing.SampleApp
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            WP7.ScanBarCode.BarCodeManager.StartScan(
+            Bar_Code.BarCodeManager.StartScan(
                 // on success
                 (b) => Dispatcher.BeginInvoke(() => 
                     {
@@ -40,11 +40,6 @@ namespace WP7.VideoScanZXing.SampleApp
                     }),
                 // Decode a QR Code
                 BarcodeFormat.QR_CODE);
-        }
-
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	
         }
 
         private void QRload_Click(object sender, System.Windows.RoutedEventArgs e)

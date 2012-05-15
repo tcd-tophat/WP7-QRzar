@@ -3,6 +3,5 @@
     <AssemblyPart x:Name="WP7.VideoScanZXing.SampleApp" Source="WP7.VideoScanZXing.SampleApp.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
     <AssemblyPart x:Name="Silverlight_ZXing_Core" Source="Silverlight_ZXing_Core.dll" />
-    <AssemblyPart x:Name="WP7.ScanBarCode" Source="WP7.ScanBarCode.dll" />
   </Deployment.Parts>
 </Deployment>

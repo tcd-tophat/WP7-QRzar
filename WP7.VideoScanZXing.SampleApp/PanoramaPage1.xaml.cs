@@ -27,7 +27,7 @@ namespace WP7.VideoScanZXing.SampleApp
 
         private void Capture_Click(object sender, RoutedEventArgs e)
 			{
-            WP7.ScanBarCode.BarCodeManager.StartScan(
+                Bar_Code.BarCodeManager.StartScan(
                 // on success
                 (b) => Dispatcher.BeginInvoke(() => 
                     {	
