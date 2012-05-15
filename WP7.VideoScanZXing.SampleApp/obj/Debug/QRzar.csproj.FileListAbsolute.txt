@@ -25,7 +25,6 @@ C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXin
 C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\AppManifest.xaml
 C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.xap
 C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\Microsoft.Phone.Controls.dll
-C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\Silverlight_ZXing_Core.dll
 C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\Microsoft.Phone.Controls.xml
 C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\App.g.i.cs
