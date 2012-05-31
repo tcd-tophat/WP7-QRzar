@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010 Express for Windows Phone
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRzar", "WP7.VideoScanZXing.SampleApp\QRzar.csproj", "{7AB37838-942F-44BF-86FF-5487AF47D4DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRzar", "QRzar\QRzar.csproj", "{7AB37838-942F-44BF-86FF-5487AF47D4DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
