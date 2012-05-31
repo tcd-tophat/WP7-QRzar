@@ -1,10 +1,10 @@
-﻿<xapCache source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="15/05/2012 16:54:37">
+﻿<xapCache source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="17/05/2012 20:07:07">
   <file source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="15/05/2012 14:51:24" />
   <file source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Background.png" archivePath="Background.png" lastWriteTime="15/05/2012 14:51:24" />
   <file source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="15/05/2012 14:51:24" />
-  <file source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.dll" archivePath="WP7.VideoScanZXing.SampleApp.dll" lastWriteTime="15/05/2012 16:54:36" />
+  <file source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.dll" archivePath="WP7.VideoScanZXing.SampleApp.dll" lastWriteTime="17/05/2012 20:07:06" />
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="15/09/2011 16:36:26" />
-  <file source="C:\Users\Eoin\WP7-QRzar\WP7.ScanBarCode\References\Silverlight_ZXing_Core.dll" archivePath="Silverlight_ZXing_Core.dll" lastWriteTime="15/05/2012 14:51:24" />
+  <file source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\Silverlight_ZXing_Core.dll" archivePath="Silverlight_ZXing_Core.dll" lastWriteTime="15/05/2012 14:51:24" />
   <file source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="15/05/2012 14:51:24" />
   <file source="C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="15/05/2012 15:39:23" />
 </xapCache>

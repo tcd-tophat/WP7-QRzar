@@ -20,10 +20,10 @@ namespace QRzar
     public class Game
     {
         [DataMember]
-        public int ID;
+        public int ID { get; private set; }
 
         [DataMember]
-        public Player[] players;
+        public Player[] players { get; private set; }
 
         /// <summary>
         /// Serializes the game object using Json serialization
@@ -45,7 +45,7 @@ namespace QRzar
         }
 
 
-        public Game(String text)
+        public Game(string text)
         {
             DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(Game));
 
