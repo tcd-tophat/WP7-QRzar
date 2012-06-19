@@ -37,6 +37,8 @@ namespace QRzar.Bar_Code
         //initialize the camera when screen is navigatedTo
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+
             _nbTry = 0;
             _cam = new PhotoCamera();
 
@@ -45,15 +47,15 @@ namespace QRzar.Bar_Code
             video.Fill = _videoBrush;
             _videoBrush.SetSource(_cam);
 
-            base.OnNavigatedTo(e);
         }
         //ends the camera screen and dipsoses of handlers and camera
         protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
         {
+            base.OnNavigatingFrom(e);
+
             _cam.CancelFocus();
             _cam.Dispose();
 
-            base.OnNavigatingFrom(e);
         }
         //camera setup
         void cam_Initialized(object sender, CameraOperationCompletedEventArgs e)
@@ -141,12 +143,6 @@ namespace QRzar.Bar_Code
             }
         }
       }
-        //prevents the back button from working as it crashes the app due to an incorrect closing of the screen. 
-        //if you want to go back or add a back button to this screen you will need to figure out how to close it safely.
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
-        }  
 
    }
 }

@@ -27,7 +27,7 @@ namespace QRzar
         {
             Bar_Code.BarCodeManager.StartScan(
                 // on success
-                (b) => Dispatcher.BeginInvoke(() => 
+                (b) => Dispatcher.BeginInvoke(() =>
                     {
                         ScannedNumber.Text = b;
 
@@ -36,7 +36,8 @@ namespace QRzar
                 (ex) => Dispatcher.BeginInvoke(() => 
                     {
                         ScannedNumber.Text = "No Code Found";
-                        NavigationService.GoBack();
+                        //if (NavigationService.CanGoBack)
+                          //  NavigationService.GoBack();
                     }),
                 // Decode a QR Code
                 BarcodeFormat.QR_CODE);

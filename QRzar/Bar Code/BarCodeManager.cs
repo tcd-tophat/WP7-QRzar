@@ -36,7 +36,6 @@ namespace QRzar.Bar_Code
         /// <param name="zxingReader">(optional) A specific reader format, Default will be EAN13Reader </param>
         public static void StartScan(Action<string> onBarCodeFound, Action<Exception> onError, BarcodeFormat barcodeFormat = null)
         {
-            
             var _mainFrame = Application.Current.RootVisual as PhoneApplicationFrame;
             if (_mainFrame != null)
             {

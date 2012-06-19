@@ -63,6 +63,8 @@ namespace QRzar
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            Game g = new Game(0, new Player[5]);
+            string x = g.ToJson();
         }
 
         // Code to execute when the application is activated (brought to foreground)

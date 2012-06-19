@@ -24,11 +24,11 @@
 
 
             <Rectangle HorizontalAlignment="Stretch" Name="video" Stroke="Black" StrokeThickness="0" VerticalAlignment="Stretch" Fill="White" />
-            <Rectangle Height="480" HorizontalAlignment="Left" Name="rectangleLeft" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="140" Fill="Black" />
-            <Rectangle Height="480" HorizontalAlignment="Right" Name="rectangleRight" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="140" Fill="Black" />
-            <Rectangle Height="74" HorizontalAlignment="Left" Margin="140,0,0,0" Name="rectangleTop" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="520" Fill="Black" />
-            <Rectangle Height="70" HorizontalAlignment="Left" Margin="140,0,0,0" Name="rectangleBottom" Stroke="Black" StrokeThickness="0" VerticalAlignment="Bottom" Width="520" Fill="Black" />
-            <Rectangle Height="340" Width="520" StrokeThickness="3" Stroke="Black" Margin="140,70" />
+            <Rectangle Height="480" HorizontalAlignment="Left" Name="rectangleLeft" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="140" Fill="Black" Margin="0,80,0,0" />
+            <Rectangle Height="480" HorizontalAlignment="Right" Name="rectangleRight" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="140" Fill="Black" Margin="0,80,0,0" />
+            <Rectangle Height="74" HorizontalAlignment="Left" Name="rectangleTop" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="520" Fill="Black" />
+            <Rectangle Height="70" HorizontalAlignment="Left" Margin="-31,0,0,132" Name="rectangleBottom" Stroke="Black" StrokeThickness="0" VerticalAlignment="Bottom" Width="520" Fill="Black" />
+            <Rectangle Height="340" Width="520" StrokeThickness="3" Stroke="Black" Margin="-12,153,-52,275" />
         </Grid>
     </Grid>
 </phone:PhoneApplicationPage>
