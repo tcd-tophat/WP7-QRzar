@@ -14,7 +14,7 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" Width="480">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -27,7 +27,9 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
+        
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ScrollViewer>
             <StackPanel>                
                 <TextBlock Margin="30" FontSize="36" TextWrapping="Wrap"   x:Name="tbScanResultBarCode"/>
                 <Button Height="113" Content="Scan Your Code" Click="Button_Click_1" FontSize="24" BorderBrush="#FFF9FAFF" HorizontalAlignment="Center" Foreground="White" Opacity="0.95" Width="394">
@@ -40,18 +42,19 @@
                 </Button>
                 <TextBlock  Name="ScannedNumber"
 							Height="72" Margin="30,0" TextWrapping="Wrap"/>
-                <Button 	Name="QRload"
-							Content="Load with QRCode" Height="84" Margin="30,0" Click="QRload_Click"/>
-                <TextBlock x:Name="TextNumber" Height="65" Margin="30,0" TextWrapping="Wrap"
+                <TextBlock x:Name="TextNumber" MinHeight="65" Margin="30,0" TextWrapping="Wrap"
 							 Text="{Binding Text, ElementName=TestCode}"/>
-                <TextBox x:Name="TestCode"
-						 TextWrapping="Wrap" Margin="30,0"/>
-                <Button Name="Textload"
-						Content="Load With Test Code" Height="90" Margin="30,0" Click="Textload_Click"/>
-
-            </StackPanel>
+                <TextBlock Height="34" Name="lbl_Email" Text="Email" Margin="0 10 0 0"/>
+                <TextBox Height="71" Name="txt_Email" Text="broken@arrow.us" Width="460" />
+                <TextBlock Height="34" Name="lbl_Password" Text="Password" />
+                <TextBox Height="71" Name="txt_Password" Text="hey" Width="460" />
+                <Button Content="Login" Height="71" Name="btn_Login" Width="252" Click="btn_Login_Click" />
+                <StackPanel Orientation="Horizontal">
+                    <HyperlinkButton Content="Sign up" Height="30" Name="hbtn_SignUp" Width="200" Click="hbtn_SignUp_Click" />
+                    <HyperlinkButton Content="Forgot password?" Height="30" Name="hbtn_ForgotPassword" Width="200" Click="hbtn_ForgotPassword_Click" />
+                </StackPanel>
+                </StackPanel>
+        </ScrollViewer>
         </Grid>
     </Grid>
- 
-    
 </phone:PhoneApplicationPage>

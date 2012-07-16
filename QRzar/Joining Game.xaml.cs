@@ -26,7 +26,8 @@ namespace QRzar
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e) {
 	 		base.OnNavigatedTo(e);
          	IDictionary<string, string> parameters = this.NavigationContext.QueryString;
-         	if (parameters.ContainsKey("Text")){
+         	if (parameters.ContainsKey("Text"))
+            {
              	PlayerCode.Text = parameters["Text"];
 				scannedCode = parameters["Text"];
                 playerInformation(scannedCode);

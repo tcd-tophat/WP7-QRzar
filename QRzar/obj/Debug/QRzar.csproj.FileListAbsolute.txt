@@ -54,3 +54,7 @@ C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Qrzar.xap
 C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\QRzar.g.resources
 C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\QRzar.dll
 C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\QRzar.pdb
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Newtonsoft.Json.dll
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\SignUp.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Images\appbar.check.rest.png
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Images\appbar.close.rest.png
