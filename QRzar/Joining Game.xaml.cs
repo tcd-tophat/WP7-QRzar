@@ -20,6 +20,11 @@ namespace QRzar
         {
             InitializeComponent();
         }
+
+        public void Logout(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+        }
 		
 		string scannedCode = "";
 		bool isValidGame;

@@ -48,7 +48,7 @@ namespace QRzar
         public static void Login(string email, string password, UploadStringCompletedEventHandler eventHandler)
         {
             string data = "data={\"username\":\"" + email + "\",\"password\":\"" + password + "\"}";
-            //A login is a post request 
+            //A login is a post request
             POST(new Networking().GetUserDetails + eventHandler, data, "/apitokens");
         }
 

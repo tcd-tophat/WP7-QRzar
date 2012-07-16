@@ -5,7 +5,7 @@
 	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
 	x:Class="QRzar.PhonePage1"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -42,4 +42,13 @@
 						Height="50" Margin="46,246,50,0" TextWrapping="Wrap" VerticalAlignment="Top" Text=""/>
 		</Grid>
 	</Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.back.rest.png" Text="Logout" Click="Logout"/>
+            <shell:ApplicationBar.MenuItems>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
 </phone:PhoneApplicationPage>

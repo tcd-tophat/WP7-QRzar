@@ -23,7 +23,6 @@ namespace QRzar
 		
 		private int PlayerScore = 0;
 		
-		
 
         private void Capture_Click(object sender, RoutedEventArgs e)
 			{

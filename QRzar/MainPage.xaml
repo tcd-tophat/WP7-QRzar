@@ -49,7 +49,7 @@
                 <TextBlock Height="34" Name="lbl_Password" Text="Password" />
                 <TextBox Height="71" Name="txt_Password" Text="hey" Width="460" />
                 <Button Content="Login" Height="71" Name="btn_Login" Width="252" Click="btn_Login_Click" />
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 10">
                     <HyperlinkButton Content="Sign up" Height="30" Name="hbtn_SignUp" Width="200" Click="hbtn_SignUp_Click" />
                     <HyperlinkButton Content="Forgot password?" Height="30" Name="hbtn_ForgotPassword" Width="200" Click="hbtn_ForgotPassword_Click" />
                 </StackPanel>
