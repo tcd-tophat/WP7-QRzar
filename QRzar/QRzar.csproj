@@ -53,8 +53,8 @@
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\Desktop\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Networking">
+      <HintPath>..\..\..\Documents\Visual Studio 2010\Projects\Networking\Networking\Bin\Debug\Networking.dll</HintPath>
     </Reference>
     <Reference Include="Silverlight_ZXing_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\WP7.ScanBarCode\References\Silverlight_ZXing_Core.dll</HintPath>
@@ -79,8 +79,6 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Networking%28Communication%29.cs" />
-    <Compile Include="Networking%28Processing%29.cs" />
     <Compile Include="PanoramaPage1.xaml.cs">
       <DependentUpon>PanoramaPage1.xaml</DependentUpon>
     </Compile>

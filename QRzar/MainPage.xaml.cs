@@ -12,7 +12,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using com.google.zxing;
 using System.IO;
-using Newtonsoft.Json;
+using Tophat;
 
 namespace QRzar
 {
@@ -77,6 +77,9 @@ namespace QRzar
             NavigationService.Navigate(new Uri("/Joining Game.xaml?Text=", UriKind.Relative));
         }
 
+        //
+        //TODO: Sign up and forgot password are for Assassin only!
+        //
         private void hbtn_SignUp_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/SignUp.xaml", UriKind.Relative));
@@ -84,6 +87,7 @@ namespace QRzar
 
         private void hbtn_ForgotPassword_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("TODO: Create a forgot password page");
             NavigationService.Navigate(new Uri("/SignUp.xaml", UriKind.Relative));
         }
 
@@ -91,9 +95,9 @@ namespace QRzar
         {
             lock (this)
             {
-                if (Networking.ApiToken != "")
+                if (Networking.Results.ContainsKey("Apitoken"))
                 {
-                    NavigationService.Navigate(new Uri("/Joining Game.xaml", UriKind.Relative));
+                    NavigationService.Navigate(new Uri("/Joining Game.xaml/Code=" + ScannedNumber.Text, UriKind.Relative));
                 }
             }
         }

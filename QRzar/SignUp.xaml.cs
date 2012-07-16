@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-using Newtonsoft.Json;
+using Tophat;
 
 namespace QRzar
 {
@@ -30,9 +30,9 @@ namespace QRzar
         {
             lock (this)
             {
-                if (Networking.ApiToken != "")
+                if (Networking.Results.ContainsKey("apitoken"))
                 {
-                    NavigationService.Navigate(new Uri("/Joining Game.xaml", UriKind.Relative));
+                    NavigationService.Navigate(new Uri("/Joining Game.xaml?Code=" + Networking.Results["apitoken"], UriKind.Relative));
                 }
             }
         }

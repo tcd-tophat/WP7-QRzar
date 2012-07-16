@@ -37,18 +37,5 @@ namespace QRzar
             return this.id == user.id;
         }
     }
-
-    public class LocalUser:User
-    {
-        public string password;
-        public string ApiToken;
-
-        public LocalUser(string email, string password, string name = null, string created = null, string photo = null, object joined_games = null, string id = null, string ApiToken = null)
-            :base(email, name, created, photo, joined_games, id)
-        {
-            this.password = password;
-            this.ApiToken = ApiToken;
-        }
-    }
 }
 

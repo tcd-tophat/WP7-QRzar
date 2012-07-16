@@ -31,10 +31,10 @@ namespace QRzar
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e) {
 	 		base.OnNavigatedTo(e);
          	IDictionary<string, string> parameters = this.NavigationContext.QueryString;
-         	if (parameters.ContainsKey("Text"))
+         	if (parameters.ContainsKey("Code"))
             {
-             	PlayerCode.Text = parameters["Text"];
-				scannedCode = parameters["Text"];
+             	PlayerCode.Text = parameters["Code"];
+				scannedCode = parameters["Code"];
                 playerInformation(scannedCode);
          	}
 		}

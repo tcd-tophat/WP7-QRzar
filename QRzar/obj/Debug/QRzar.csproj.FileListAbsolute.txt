@@ -58,3 +58,5 @@ C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Newtonsoft.Json.dll
 C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\SignUp.g.i.cs
 C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Images\appbar.check.rest.png
 C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Images\appbar.back.rest.png
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Networking.dll
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Networking.pdb
