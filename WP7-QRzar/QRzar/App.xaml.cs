@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Tophat;
 
 namespace QRzar
 {
@@ -63,7 +64,7 @@ namespace QRzar
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            Networking.Init("http://arboroia.com", 443);
+            Networking.Init<QRPlayer>("http://arboroia.com", 443);
         }
 
 
@@ -71,6 +72,7 @@ namespace QRzar
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            Networking.Init<QRPlayer>("http://arboroia.com", 443);
         }
 
         // Code to execute when the application is deactivated (sent to background)

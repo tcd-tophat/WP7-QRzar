@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-using Newtonsoft.Json;
+using Tophat;
 
 namespace QRzar
 {
@@ -23,21 +23,17 @@ namespace QRzar
 
         public void CreateAccount(object sender, EventArgs e)
         {
-            Networking.CreateUser(txt_Email.Text.ToLower(), txt_Password.Password, txt_Name.Text, txt_Photo.Text, eventhandler);
-        }
-
-        public void Cancel(object sender, EventArgs e)
-        {
-            //TODO: Possibly bad if the user hits this(by accident maybe) and hopes to return to sign up with all the entered info still intact
-            if (NavigationService.CanGoBack)
-                NavigationService.GoBack();
+             Networking.CreateUser(txt_Email.Text.ToLower(), txt_Password.Password, txt_Name.Text, txt_Photo.Text, eventhandler);
         }
 
         public void eventhandler(object sender, UploadStringCompletedEventArgs e)
         {
             lock (this)
             {
-                NavigationService.Navigate(new Uri("/Joining Game.xaml", UriKind.Relative));
+                if (Networking.Results.ContainsKey("apitoken"))
+                {
+                    NavigationService.Navigate(new Uri("/Joining Game.xaml?Code=" + Networking.Results["apitoken"], UriKind.Relative));
+                }
             }
         }
 
