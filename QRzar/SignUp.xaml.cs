@@ -23,7 +23,7 @@ namespace QRzar
 
         public void CreateAccount(object sender, EventArgs e)
         {
-            Networking.CreateUser(txt_Email.Text.ToLower(), txt_Password.Password, txt_Name.Text, txt_Photo.Text, eventhandler);
+             Networking.CreateUser(txt_Email.Text.ToLower(), txt_Password.Password, txt_Name.Text, txt_Photo.Text, eventhandler);
         }
 
         public void eventhandler(object sender, UploadStringCompletedEventArgs e)

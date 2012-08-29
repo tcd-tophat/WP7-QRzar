@@ -54,41 +54,34 @@
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Networking">
-      <HintPath>..\..\..\Documents\Visual Studio 2010\Projects\Networking\Networking\Bin\Debug\Networking.dll</HintPath>
+      <HintPath>..\..\..\WP7-Networking\Networking\Bin\Debug\Networking.dll</HintPath>
     </Reference>
-    <Reference Include="Silverlight_ZXing_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\WP7.ScanBarCode\References\Silverlight_ZXing_Core.dll</HintPath>
-    </Reference>
+    <Reference Include="Silverlight_ZXing_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Net" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="WP7_Barcode_Library">
+      <HintPath>..\..\..\Desktop\WP7_Barcode_Library.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Bar Code\BarCodeManager.cs" />
-    <Compile Include="Bar Code\BarCode.xaml.cs">
-      <DependentUpon>BarCode.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Bar Code\VideoScanException.cs" />
-    <Compile Include="Game.cs" />
+    <Compile Include="QRCodeManager.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PanoramaPage1.xaml.cs">
-      <DependentUpon>PanoramaPage1.xaml</DependentUpon>
+    <Compile Include="GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Joining Game.xaml.cs">
-      <DependentUpon>Joining Game.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="QRPlayer.cs" />
     <Compile Include="SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -115,23 +108,28 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SplashScreenImage.jpg" />
+    <Resource Include="ButtonRank.png" />
+    <Content Include="ButtonInfo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ButtonQR.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ImageQRZar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Join_Text.png" />
+    <Resource Include="Rank_text.png" />
+    <Resource Include="redbanner.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Bar Code\BarCode.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PanoramaPage1.xaml">
+    <Page Include="GamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Joining Game.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="SignUp.xaml">
       <SubType>Designer</SubType>
