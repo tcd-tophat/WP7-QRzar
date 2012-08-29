@@ -1,0 +1,62 @@
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\Background.png
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\ApplicationIcon.png
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\AppManifest.xaml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.xap
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\Silverlight_ZXing_Core.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.ScanBarCode.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.ScanBarCode.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\App.g.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\MainPage.g.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\PanoramaPage1.g.cs
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.g.resources
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.dll
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.pdb
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\XapCacheFile.xml
+C:\Users\Glenn\Documents\Computer Science\Java Zombies\WP7.VideoScanZXing.SampleApp\obj\Debug\Joining Game.g.cs
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\ApplicationIcon.png
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\Background.png
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.dll
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.pdb
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\AppManifest.xaml
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\WP7.VideoScanZXing.SampleApp.xap
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\App.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\MainPage.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\PanoramaPage1.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\Joining Game.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.g.resources
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.dll
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\WP7.VideoScanZXing.SampleApp.pdb
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\XapCacheFile.xml
+C:\Users\Eoin\WP7-QRzar\WP7.VideoScanZXing.SampleApp\obj\Debug\Bar Code\BarCode.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\ApplicationIcon.png
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Background.png
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\AppManifest.xaml
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\App.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\Bar Code\BarCode.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\MainPage.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\PanoramaPage1.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\Joining Game.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\XapCacheFile.xml
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\QRzar.dll
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\QRzar.pdb
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Qrzar.xap
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\QRzar.g.resources
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\QRzar.dll
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\QRzar.pdb
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Newtonsoft.Json.dll
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\obj\Debug\SignUp.g.i.cs
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Images\appbar.check.rest.png
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Images\appbar.back.rest.png
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Networking.dll
+C:\Users\Eoin\WP7-QRzar\WP7-QRzar\QRzar\Bin\Debug\Networking.pdb
