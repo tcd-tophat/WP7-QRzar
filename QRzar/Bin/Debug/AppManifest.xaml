@@ -3,8 +3,9 @@
     <AssemblyPart x:Name="QRzar" Source="QRzar.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
     <AssemblyPart x:Name="Networking" Source="Networking.dll" />
-    <AssemblyPart x:Name="Silverlight_ZXing_Core" Source="Silverlight_ZXing_Core.dll" />
     <AssemblyPart x:Name="WP7_Barcode_Library" Source="WP7_Barcode_Library.dll" />
+    <AssemblyPart x:Name="ZXingVer1_7" Source="ZXingVer1_7.dll" />
     <AssemblyPart x:Name="Newtonsoft.Json" Source="Newtonsoft.Json.dll" />
+    <AssemblyPart x:Name="Silverlight_ZXing_Core" Source="Silverlight_ZXing_Core.dll" />
   </Deployment.Parts>
 </Deployment>

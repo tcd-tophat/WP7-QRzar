@@ -14,6 +14,7 @@ using com.google.zxing;
 using com.google.zxing.common;
 using com.google.zxing.qrcode;
 using Microsoft.Devices;
+using System.Device.Location;
 using System.Windows.Threading;
 using Tophat;
 
@@ -21,20 +22,23 @@ namespace QRzar
 {
     public partial class GamePage : PhoneApplicationPage
     {
+        bool firstalive = true;
+
         PhotoCamera _cam;
         VideoBrush _videoBrush = new VideoBrush();
         DispatcherTimer _timerqsec;
         DispatcherTimer _timer1sec;
-
+        GeoCoordinateWatcher watcher;
 
         private PhotoCameraLuminanceSource _luminance;
         private QRCodeReader _reader;
 
-        private bool camInitializing;
-
         private int myGameid;
-        private Player myPlayer;
+        private QRPlayer myPlayer;
+        private int timeleft;
+        private bool isKilling;
 
+        private Team[] teams;
         // Constructor
         public GamePage()
         {
@@ -46,7 +50,11 @@ namespace QRzar
         {
             //Recover state after tombstoning
             if (State.ContainsKey("gameid"))
-                myGameid = (int)(State["gameid"]);
+            {
+                myGameid = (int)State["gameid"];
+                timeleft = (int)((((DateTime)State["endtime"]).Ticks - DateTime.Now.Ticks) / 10000000);
+            }
+            //Starting a new game
             else
             {
                 myGameid = int.Parse(NavigationContext.QueryString["gameid"]);
@@ -54,7 +62,23 @@ namespace QRzar
                 Networking.SaveData("CurrentGame", myGameid.ToString());
             }
 
-            myPlayer = Networking.GetPlayerByGameId_Local(myGameid);
+
+            myPlayer = GetPlayerByGameId(myGameid) as QRPlayer;
+            isKilling = false;
+
+            //Setup the camera and video brush
+            _cam = new PhotoCamera();
+
+            _cam.Initialized += cam_Initialized;
+
+            video.Fill = _videoBrush;
+            _videoBrush.SetSource(_cam);
+            _videoBrush.RelativeTransform = new CompositeTransform() { CenterX = 0.5, CenterY = 0.5, Rotation = 90 };
+
+            //Setup the GPS tracker
+            watcher = new GeoCoordinateWatcher(GeoPositionAccuracy.High);
+            watcher.StatusChanged += watcher_StatusChanged;
+            watcher.PositionChanged += watcher_PositionChanged;
 
             //This timer is for scanning qrcodes 4 times a second
             _timerqsec = new DispatcherTimer();
@@ -69,16 +93,18 @@ namespace QRzar
             _timer1sec.Interval = TimeSpan.FromMilliseconds(1000);
 
 
-            _timer1sec.Tick += (o, evt) => Update();
+            Networking.GetGameById<QRGame>(myGameid, (obj,evt) => OnGetGame());
             
-
             _timer1sec.Start();
             base.OnNavigatedTo(e);
         }
 
-        //ends the camera screen and dipsoses of handlers and camera
+        //Exits the game screen and disposes of handlers and camera
         protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
         {
+            _timer1sec.Stop();
+            _timerqsec.Stop();
+
             try
             {
                 _cam.Initialized -= cam_Initialized;
@@ -94,17 +120,63 @@ namespace QRzar
 
         }
 
-        protected override void  OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
+        //Tombstoning handled here
+        protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
+            QRGame game = Networking.GetGameById_Local(myGameid) as QRGame;
+
+            if (game != null)
+            {
+                State["gameid"] = game.id;
+                State["endtime"] = game.endTime;
+            }
             base.OnNavigatedFrom(e);
-            State["gameid"] = myGameid;
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
-            //If the user presses the back button, assume they are going back to the JoinGame page
+            if (MessageBox.Show("Are you sure you want to quit this game?", "Quit Game", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                Networking.Logout();
+                //The timers continue even after navigating from the page
+                //so they must be stopped first
+                _timer1sec.Stop();
+                _timerqsec.Stop();
+            }
+            else
+                e.Cancel = true;
 
             base.OnBackKeyPress(e);
+        }
+
+        private void watcher_StatusChanged(object sender, GeoPositionStatusChangedEventArgs e)
+        {
+            if (e.Status == GeoPositionStatus.Disabled)
+            {
+                MessageBox.Show("Your device does not support location tracking");
+            }
+        }
+
+        private void watcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e)
+        {
+            if (!double.IsNaN(e.Position.Location.Latitude))
+            {
+                Networking.UpdateGPS(myPlayer.id, e.Position.Location.Latitude,
+                   e.Position.Location.Longitude);
+            }
+        }
+
+        public Player GetPlayerByGameId(int GameId)
+        {
+            for (int i = 0; i < Networking.Players.Count; i++)
+            {
+                Team team = (Networking.Players[i] as QRPlayer).team as Team;
+                if (team.game != null && team.game.id == GameId)
+                {
+                    return Networking.Players[i];
+                }
+            }
+            return null;
         }
 
         //camera setup
@@ -118,11 +190,6 @@ namespace QRzar
                 _luminance = new PhotoCameraLuminanceSource(width, height);
                 _reader = new QRCodeReader();
 
-                Dispatcher.BeginInvoke(() =>
-                {
-                    _timerqsec.Start();
-                });
-
                 _cam.FlashMode = FlashMode.Auto;
                 _cam.Focus();
 
@@ -131,9 +198,6 @@ namespace QRzar
             {
                 //Throws an exception if the camera is disposed while this method is being called
             }
-
-            //The camera is now done intializing 
-            camInitializing = false;
         }
 
         private void ScanPreviewBuffer()
@@ -147,26 +211,57 @@ namespace QRzar
 
                 Dispatcher.BeginInvoke(() =>
                 {
-                    if (QRCodeManager.IsValidQRCode(result.Text) && result.Text[0] != (myPlayer as QRPlayer).team)
+                    if(myPlayer.alive)
                     {
-                        if (!Networking.IsMakingRequest)
+                        if (QRCodeManager.IsValidQRCode(result.Text) && (result.Text[0] != (myPlayer as QRPlayer).qrcode[0]))
                         {
-                            var dict = new Dictionary<string, string>();
-                            dict["qrcode"] = result.Text;
-
-                            Networking.Kill(dict, (o, e) =>
+                            if (!isKilling)
                             {
-                                if (!Networking.FailedRequest)
+                                isKilling = true;
+                                var dict = new Dictionary<string, object>();
+
+                                dict["killer"] = myPlayer;
+                                dict["victim_qrcode"] = result.Text;
+
+                                Networking.Kill(dict, (o, e) =>
                                 {
-                                    MessageBox.Show("+100");
-                                    lbl_ScoreBonus.Text = "+100";
-                                    lbl_ScoreBonus.Foreground = new SolidColorBrush(Color.FromArgb(0, 10, 255, 30));
-                                    StoryboardBonusText.AutoReverse = true;
-                                    StoryboardBonusText.Begin();
-                                }
-                            });
+                                    if (!Networking.FailedRequest)
+                                    {
+                                        DisplayBonus_Green("+100");
+                                    }
+                                    else
+                                    {
+                                        switch (Networking.LastError)
+                                        {
+                                            case 404:
+                                                DisplayMessage_Red("That player isn't playing this game!");
+                                                break;
+                                            case 409:
+                                                DisplayMessage_Red("That player is already dead!");
+                                                break;
+                                            //case 410:
+                                            //DisplayMessage_Red("You are dead!");
+                                            //break;
+                                            default:
+                                                Dispatcher.BeginInvoke(() => MessageBox.Show(Networking.LastError.ToString()));
+                                                break;
+                                        }
+                                    }
+                                    isKilling = false;
+                                });
+
+                            }
                         }
-                         
+                    }
+                    else
+                    {
+                        if (QRCodeManager.IsValidQRCode(result.Text) && (result.Text[1] == 'E'))
+                        {
+                            //If the player isn't alive, they must scan their respawn code instead
+                            Networking.Respawn(result.Text, myPlayer.id, null);
+                        }
+                        else
+                            MessageBox.Show("Please scan your respawn code in order to continue playing the game", "You are dead!", MessageBoxButton.OK);
                     }
                 });
 
@@ -177,81 +272,180 @@ namespace QRzar
             }
         }
 
+        private void OnRespawn(IAsyncResult e)
+        {
+            if (!Networking.FailedRequest)
+            {
+                //StoryboardRevive.Begin();
+            }
+        }
+
+
+        private void DisplayBonus_Green(string text)
+        {
+            lbl_Bonus.Text = text;
+            lbl_Bonus.Foreground = new SolidColorBrush(Color.FromArgb(255, 10, 255, 30));
+            StoryboardBonusText.AutoReverse = true;
+            StoryboardBonusText.FillBehavior = FillBehavior.Stop;
+            StoryboardBonusText.Begin();
+        }
+
+        private void DisplayMessage_Green(string text)
+        {
+            lbl_Status.Text = text;
+            lbl_Status.Foreground = new SolidColorBrush(Color.FromArgb(255, 10, 255, 30));
+            StoryboardStatusText.AutoReverse = true;
+            StoryboardStatusText.FillBehavior = FillBehavior.Stop;
+            StoryboardStatusText.Begin();
+        }
+        private void DisplayMessage_Orange(string text)
+        {
+            lbl_Status.Text = text;
+            lbl_Status.Foreground = new SolidColorBrush(Color.FromArgb(255, 150, 80, 10));
+            StoryboardStatusText.AutoReverse = true;
+            StoryboardStatusText.FillBehavior = FillBehavior.Stop;
+            StoryboardStatusText.Begin();
+        }
+        private void DisplayMessage_Red(string text)
+        {
+            lbl_Status.Text = text;
+            lbl_Status.Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 30, 10));
+            StoryboardStatusText.AutoReverse = true;
+            StoryboardStatusText.FillBehavior = FillBehavior.Stop;
+            StoryboardStatusText.Begin();
+        }
 
         private void Button_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
-            StartCamera();
+            _timerqsec.Start();
         }
 
         private void Button_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
-            StopCamera();
-        }
-
-        private void StartCamera()
-        {
-            //Start it in a new thread so that the ui isn't blocked
-            Dispatcher.BeginInvoke(() =>
-            {
-                try
-                {
-                    if (!camInitializing) //Prevents double initalization of the camera(which throws an exception)
-                    {
-                        camInitializing = true;
-                        _cam = new PhotoCamera();
-
-                        _cam.Initialized += cam_Initialized;
-
-                        _timerqsec.Start();
-
-                        video.Fill = _videoBrush;
-                        _videoBrush.SetSource(_cam);
-                        _videoBrush.RelativeTransform = new CompositeTransform() { CenterX = 0.5, CenterY = 0.5, Rotation = 90 };
-                    }
-                }
-                catch
-                {
-                    //Throws an exception if the camera hasnt been initialised yet
-                }
-
-            });
-        }
-
-
-        private void StopCamera()
-        {
-            Dispatcher.BeginInvoke(() =>
-            {
-                try
-                {
-                    _cam.Initialized -= cam_Initialized;
-                    _cam.CancelFocus();
-                    _cam.Dispose();
-                    _timerqsec.Stop();
-
-                    //The camera may be still initalizing while this code is called, so set initializing to false
-                    //in order to prevent it from being stuck initializing forever
-                    camInitializing = false;
-                }
-                catch
-                {
-                    //Throws an exception if the camera hasnt been initialised yet
-                }
-            });
-        }
-
-
-
-        private void OnGetGame()
-        {
+            _timerqsec.Stop();
         }
 
         private void Update()
         {
+            timeleft--;
+            var time = TimeSpan.FromSeconds(timeleft);
 
-            //Get the game which contains the list of players
-            //Networking.GetGameById<Game>(myGame.id,
-            //    (o, e) => OnGetGame());
+            Networking.Apitoken = Networking.Apitoken;
+
+            //Display the hours only if there are any
+            if (time.TotalHours < 1)
+                lbl_TimeRemaining.Text = String.Format("{0:00}:{1:00}", (int)time.TotalMinutes, time.Seconds);
+            else
+                lbl_TimeRemaining.Text = String.Format("{0}:{1:00}:{2:00}", (int)time.TotalHours, (int)(time.TotalMinutes) % 60, time.Seconds);
+
+            Networking.GET((o, evt) => OnGetAlive(evt), "/alive/" + myPlayer.id, true);
+
+            //Only get team scores every 5 seconds
+            if (timeleft % 5 == 0)
+            {
+                for (int i = 0; i < teams.Length; i++)
+                {
+                    Team x = teams[i];
+                    Networking.GetTeamScores(teams[i].id, (o, e) => OnGetTeamScore(x));
+                }
+            }
+        }
+
+        private void OnGetAlive(DownloadStringCompletedEventArgs e)
+        {
+            if (!Networking.FailedRequest)
+            {
+                string q = e.Result;
+
+                bool newalive = (bool)Networking.Results["alive"];
+
+                if (!firstalive)
+                {
+                    if (myPlayer.alive)
+                    {
+                        if (!newalive)
+                        {
+                            Shader.Opacity = 0.3f;
+                            Dispatcher.BeginInvoke(() =>
+                                {
+                                    MessageBox.Show("Please head to your base to respawn", "You Were Tagged!", MessageBoxButton.OK);
+                                }
+                            );
+                        }
+                    }
+                    else
+                    {
+                        if (newalive)
+                        {
+                            Shader.Opacity = 0;
+                            DisplayMessage_Green("Respawn Successful!");
+                        }
+                    }
+                }
+
+                firstalive = false;
+                myPlayer.alive = newalive;
+                string x = Networking.Results["alive"].ToString();
+            }
+        }
+
+        private void OnGetGame()
+        {
+            if (!Networking.FailedRequest)
+            {
+                QRGame game = Networking.GetGameById_Local(myGameid) as QRGame;
+                
+                //Get the list of teams in the game
+                teams = game.teams;
+
+                //Get the time remaining
+                timeleft = (int)((game.endTime.Ticks - DateTime.Now.Ticks) / 10000000);
+
+                _timer1sec.Tick += (o, e) => Update();
+            }
+            else
+            {
+                Networking.GetGameById<QRGame>(myGameid, (o, e) => OnGetGame());
+            }
+        }
+
+        private void OnGetTeamScore(Team team)
+        {
+            string score = Networking.Results["score"].ToString();
+            if (team.id == myPlayer.team.id)
+            {
+                lbl_Team1Score.Text = score;
+                lbl_Team1Score.Foreground = new SolidColorBrush(GetColourFromCharacter(team.reference_code));
+            }
+            else
+            {
+                lbl_Team2Score.Text = score;
+                lbl_Team2Score.Foreground = new SolidColorBrush(GetColourFromCharacter(team.reference_code));
+            }
+        }
+
+        private void btn_Powerup_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        {
+            if (!double.IsNaN(watcher.Position.Location.Latitude))
+            {
+                Networking.UpdateGPS(myPlayer.id, watcher.Position.Location.Latitude,
+                   watcher.Position.Location.Longitude);
+            }
+            DisplayMessage_Red("You don't have any powerups!");
+        }
+
+        private Color GetColourFromCharacter(char ch)
+        {
+            switch (ch)
+            {
+                case 'B':
+                    return Color.FromArgb(255, 50, 120, 255);
+                case 'R':
+                    return Color.FromArgb(255, 255, 50, 30);
+                default:
+                    return Color.FromArgb(255, 255, 255, 255);
+
+            }
         }
     }
 }

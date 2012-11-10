@@ -6,7 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -16,38 +16,89 @@
 	<phone:PhoneApplicationPage.Resources>
 		
 		<Storyboard x:Name="StoryboardRevealTop">
-			<DoubleAnimation Duration="0:0:0.35" To="-450" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="rectangle" d:IsOptimized="True"/>
-			<DoubleAnimation Duration="0:0:0.35" To="-450" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
-			<DoubleAnimation Duration="0:0:0.35" To="-450" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image1" d:IsOptimized="True"/>
+			<DoubleAnimation Duration="0:0:0.6" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image" d:IsOptimized="True"/>
 		</Storyboard>
 		<Storyboard x:Name="StoryboardRevealTop_Reverse">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image">
-				<EasingDoubleKeyFrame KeyTime="0" Value="-450"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="rectangle">
-				<EasingDoubleKeyFrame KeyTime="0" Value="-450"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image1">
-				<EasingDoubleKeyFrame KeyTime="0" Value="-450"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
-		<Storyboard x:Name="StoryboardText">
-			<DoubleAnimation Duration="0:0:0.6" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="txt_Body" d:IsOptimized="True"/>
-			<DoubleAnimation Duration="0:0:0.6" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="txt_Header" d:IsOptimized="True"/>
+		<Storyboard x:Name="StoryboardText"/>
+		<Storyboard x:Name="StoryboardText_Reverse"/>
+		<Storyboard x:Name="StoryboardVideo">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="video">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0.15"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
-		<Storyboard x:Name="StoryboardText_Reverse">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="txt_Body">
+		<Storyboard x:Name="StoryboardVideo_Reverse">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="video">
 				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="txt_Header">
-				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.145"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
+		<Storyboard x:Name="StoryboardButtonFlash"/>
+		<Style x:Key="ButtonStyle" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+			<Setter Property="Padding" Value="10,3,10,5"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid Background="Transparent">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0" To="Pressed"/>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Padding)" Storyboard.TargetName="ButtonBackground">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Thickness>0</Thickness>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonBackground">
+												<DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{StaticResource PhoneForegroundBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<DoubleAnimation Duration="0:0:0.1" To="7" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ButtonBackground" d:IsOptimized="True"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonBackground">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Border x:Name="ButtonBackground" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}" RenderTransformOrigin="0.5,0.5">
+								<Border.RenderTransform>
+									<CompositeTransform/>
+								</Border.RenderTransform>
+								<Border.Background>
+									<ImageBrush Stretch="Fill" ImageSource="/LaunchButton.png"/>
+								</Border.Background>
+								<ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="Black"/>
+							</Border>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 		
 	</phone:PhoneApplicationPage.Resources>
 
@@ -71,57 +122,55 @@
         	</Grid.Background>
             <Grid d:LayoutOverrides="Width" Margin="0">
             	<Grid.RowDefinitions>
-            		<RowDefinition Height="119.5"/>
-            		<RowDefinition Height="Auto" MinHeight="273"/>
-            		<RowDefinition Height="85"/>
-            		<RowDefinition Height="23"/>
+            		<RowDefinition Height="351"/>
+            		<RowDefinition Height="Auto" MinHeight="66"/>
+            		<RowDefinition Height="108"/>
+            		<RowDefinition Height="153"/>
             		<RowDefinition/>
-            		<RowDefinition Height="53"/>
+            		<RowDefinition Height="76"/>
             	</Grid.RowDefinitions>
             	<Grid.ColumnDefinitions>
-            		<ColumnDefinition/>
+            		<ColumnDefinition Width="0.794*"/>
+            		<ColumnDefinition Width="0.206*"/>
             	</Grid.ColumnDefinitions>
-                <Rectangle x:Name="video" Margin="16,40,16,18.5" Fill="White" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="3"/>
-                <TextBlock x:Name="txt_Body" Margin="43,-9.5,41,17.5" Grid.Row="1" TextWrapping="Wrap" Foreground="White" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" HorizontalAlignment="Center" Opacity="0"><Run Text="To start playing the game, press and hold the join button. This will activate the qr scanner."/><LineBreak/><Run/><LineBreak/><Run Text="Use the camera to scan your own qrcode and then wait for all the other players to do the same."/><LineBreak/><Run/><LineBreak/><Run Text="After this, you will have 60 seconds before the game begins."/><LineBreak/><Run/><LineBreak/><Run Text="Enjoy!"/></TextBlock>
-                <TextBlock x:Name="txt_Header" Margin="43,0,41,7.5" TextWrapping="Wrap" Text="Info" FontWeight="Bold" Foreground="White" FontSize="24" RenderTransformOrigin="0.5,0.5" Height="51" VerticalAlignment="Bottom" HorizontalAlignment="Center" Opacity="0"/>
-                <Rectangle x:Name="rectangle" Margin="0" Fill="Black" Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5">
-                	<Rectangle.RenderTransform>
-                		<CompositeTransform/>
-                	</Rectangle.RenderTransform>
+                <Rectangle Margin="0" Grid.Row="3" Grid.ColumnSpan="2">
+                	<Rectangle.Fill>
+                		<ImageBrush Stretch="Fill" ImageSource="/LaunchDarkBackground.png"/>
+                	</Rectangle.Fill>
                 </Rectangle>
-                <Image x:Name="image" Source="ImageQRZar.png" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Margin="0,4.5,0,-4.5" d:LayoutOverrides="GridBox">
-                	<Image.RenderTransform>
-                		<CompositeTransform ScaleX="0.5" ScaleY="0.5"/>
-                	</Image.RenderTransform>
-                </Image>
-                <Button x:Name="btn_Rank" Margin="0,0,0,4" Grid.Row="4" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" HorizontalAlignment="Right" Width="130" ManipulationStarted="btn_Rank_ManipulationStarted" ManipulationCompleted="btn_Rank_ManipulationCompleted">
-                	<Button.Background>
-                		<ImageBrush Stretch="Uniform" ImageSource="ButtonRank.png"/>
-                	</Button.Background>
+                <Button x:Name="btn_ScanPlayerID" Content="Scan&#xd;&#xa;PlayerID         " Margin="10,25,0,25" Grid.Row="3" BorderBrush="{x:Null}" BorderThickness="0" Foreground="Black" FontWeight="Bold" ManipulationStarted="btn_ScanPlayerID_ManipulationStarted" ManipulationCompleted="btn_ScanX_ManipulationCompleted" HorizontalAlignment="Left" Width="221" Opacity="0.495" Style="{StaticResource ButtonStyle}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="LaunchButton.png"/>
+                    </Button.Background>
                 </Button>
-                <Button x:Name="btn_Info" Margin="0,0,0,3" Grid.Row="4" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" d:LayoutOverrides="HorizontalAlignment" HorizontalAlignment="Left" Width="130" ManipulationStarted="btn_Info_ManipulationStarted" ManipulationCompleted="btn_Info_ManipulationCompleted">
-                	<Button.Background>
-                		<ImageBrush Stretch="Uniform" ImageSource="ButtonInfo.png"/>
-                	</Button.Background>
+                <Button x:Name="btn_ScanGameID" Content="Scan&#xd;&#xa;GameID         " Margin="225,25,10,25" Grid.Row="3" BorderBrush="{x:Null}" BorderThickness="0" Grid.ColumnSpan="2" Foreground="Black" FontWeight="Bold" ManipulationStarted="btn_ScanGameID_ManipulationStarted" ManipulationCompleted="btn_ScanX_ManipulationCompleted" Opacity="0.5" Style="{StaticResource ButtonStyle}">
+                        <Button.Background>
+                        <ImageBrush ImageSource="LaunchButton.png"/>
+                        </Button.Background>
                 </Button>
-                <Button x:Name="btn_QR" Margin="136,16,140,0" Grid.Row="4" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="180" ManipulationStarted="btn_QR_ManipulationStarted" ManipulationCompleted="btn_QR_ManipulationCompleted" Height="187" VerticalAlignment="Top">
-                	<Button.Background>
-                		<ImageBrush ImageSource="ButtonQR.png" Stretch="Uniform"/>
-                	</Button.Background>
-                </Button>
-                <Image x:Name="image1" Margin="0" Grid.Row="3" Source="redbanner.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-                	<Image.RenderTransform>
-                		<CompositeTransform/>
-                	</Image.RenderTransform>
-                </Image>
+                <Rectangle x:Name="video" Margin="0" Fill="#FF080606" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="3" Grid.ColumnSpan="2" />
+                <Rectangle Margin="0" Grid.RowSpan="3" Grid.ColumnSpan="2">
+                	<Rectangle.Fill>
+                		<ImageBrush Stretch="Fill" ImageSource="LaunchTopSkin.png"/>
+                	</Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Margin="0">
+                    <Rectangle.Fill>
+                        <ImageBrush Stretch="Fill" ImageSource="/LaunchQRCode.png"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Margin="0" Grid.Row="4" Grid.ColumnSpan="2">
+                	<Rectangle.Fill>
+                		<ImageBrush Stretch="Fill" ImageSource="/LaunchBrightBackground.png"/>
+                	</Rectangle.Fill>
+                </Rectangle>
+                <Rectangle Margin="0" Grid.Row="5" Grid.ColumnSpan="2">
+                	<Rectangle.Fill>
+                		<ImageBrush Stretch="Fill" ImageSource="/LaunchDarkBackground.png"/>
+                	</Rectangle.Fill>
+                </Rectangle>
             </Grid>
         </Grid>
     </Grid>
-
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="btn_ScanMyCode" IconUri="/Images/appbar.add.rest.png" Text="Scan My Code" Click="ScanMyCode"/>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
     
 </phone:PhoneApplicationPage>

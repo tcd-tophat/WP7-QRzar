@@ -27,17 +27,26 @@ namespace QRzar
                     || qrcode[0] == 'Y')
                 );
         }
+
+        public static bool IsValidRespawnCode(string qrcode)
+        {
+            return qrcode.Length == 6;
+        }
     }
 
 
     public class PhotoCameraLuminanceSource : LuminanceSource
     {
         public byte[] PreviewBufferY { get; private set; }
+        public new bool CropSupported { get; protected set; }
+        public new bool RotateSupported { get; protected set; }
 
         public PhotoCameraLuminanceSource(int width, int height)
             : base(width, height)
         {
             PreviewBufferY = new byte[width * height];
+            CropSupported = true;
+            RotateSupported = true;
         }
 
         public override sbyte[] Matrix

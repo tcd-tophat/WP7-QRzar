@@ -23,7 +23,8 @@ namespace QRzar
     public partial class MainPage : PhoneApplicationPage
     {
         Game myGame;
-        string QRCode;
+        int gameCode;
+        string playerCode;
 
         PhotoCamera _cam;
         VideoBrush _videoBrush = new VideoBrush();
@@ -31,9 +32,12 @@ namespace QRzar
 
         private PhotoCameraLuminanceSource _luminance;
         private QRCodeReader _reader;
-        private bool camInitializing;
 
         private bool isScanningGame;
+        private bool isScanningPlayer;
+
+        private bool isGameScanned;
+        private bool isPlayerScanned;
 
         // Constructor
         public MainPage()
@@ -45,8 +49,8 @@ namespace QRzar
         {
             base.OnNavigatedTo(e);
 
-            Networking.DeleteFile("data\\CurrentGame");
-            Networking.DeleteFile("data\\Players");
+            //Networking.DeleteFile("CurrentGame");
+            //Networking.DeleteFile("Players");
 
             //Check if a game in progress has already been saved and continue it
             string data = Networking.LoadData("CurrentGame");
@@ -59,9 +63,18 @@ namespace QRzar
                 _timer.Tick += (o, arg) => ScanPreviewBuffer();
                 //The timer auto-starts so it needs to be stopped here
                 _timer.Stop();
-                MessageBox.Show("Please scan the QRCode on your t-shirt");
             }
 
+            //Login to the server
+            Networking.Login();
+
+            _cam = new PhotoCamera();
+
+            _cam.Initialized += cam_Initialized;
+
+            video.Fill = _videoBrush;
+            _videoBrush.SetSource(_cam);
+            _videoBrush.RelativeTransform = new CompositeTransform() { CenterX = 0.5, CenterY = 0.5, Rotation = 90 };
         }
 
         //ends the camera screen and dipsoses of handlers and camera
@@ -81,6 +94,12 @@ namespace QRzar
             base.OnNavigatingFrom(e);
 
         }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnBackKeyPress(e);
+        }
+
         //camera setup
         void cam_Initialized(object sender, CameraOperationCompletedEventArgs e)
         {
@@ -92,23 +111,13 @@ namespace QRzar
                 _luminance = new PhotoCameraLuminanceSource(width, height);
                 _reader = new QRCodeReader();
 
-                Dispatcher.BeginInvoke(() =>
-                {
-                    _timer.Start();
-                });
-
                 _cam.FlashMode = FlashMode.Auto;
                 _cam.Focus();
-
-
             }
             catch
             {
                 //Throws an exception if the camera is disposed while this method is being called
             }
-
-            //The camera is now done intializing 
-            camInitializing = false;
         }
 
         private void ScanPreviewBuffer()
@@ -122,36 +131,10 @@ namespace QRzar
 
                 Dispatcher.BeginInvoke(() =>
                 {
-                    //Stop the timer so that it doesn't scan the same qrcode multiple times
-                    _timer.Stop();
-                    if (isScanningGame)
-                        SuccessfulGameScan(result);
-                    else
-                        SuccessfulScan(result);
-                    //Start up the timer again after the scan has been completed
-                    _timer.Start();
+                    SuccessfulScan(result);
                 });
 
                 _cam.Focus();
-
-            }
-            catch
-            {
-            }
-        }
-
-        private void SuccessfulGameScan(Result result)
-        {
-            try
-            {
-                var extras = new Dictionary<string, object>();
-                extras["qrcode"] = QRCode;
-
-                int gameid = int.Parse(result.Text);
-                if (MessageBox.Show(gameid.ToString(), "Would you like join the game with id of", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-                {
-                    Networking.JoinGame<QRPlayer>("anon-WP7", gameid, extras, (o, e) => OnJoinGame(gameid));
-                }
             }
             catch
             {
@@ -160,180 +143,140 @@ namespace QRzar
 
         private void SuccessfulScan(Result result)
         {
-            try
+            if (isScanningGame)
             {
-                MessageBox.Show(result.Text);
-                if (QRCodeManager.IsValidQRCode(result.Text))
+                int temp;
+
+                if (int.TryParse(result.Text, out temp))
                 {
-                    if (!Networking.IsMakingRequest) //Make sure only 1 request gets sent
-                    {
-                        if (MessageBox.Show(result.Text, "Would you like to continue with the QRcode", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-                        {
-                            //Login to the server
-                            Networking.Login((o, e) =>
-                            {
-                                if (!Networking.FailedRequest)
-                                {
-                                    QRCode = result.Text;
-                                    isScanningGame = true;
-                                    MessageBox.Show("Now scan the QRcode for the game you want to join");
-                                }
-                                else if (Networking.isStopped)
-                                    MessageBox.Show("Couldn't log in");
-                            });
-                        }
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Exception");
-            }
-        }
+                    gameCode = temp;
+                    isGameScanned = true;
+                    btn_ScanGameID.Background = new SolidColorBrush(Colors.Green);
 
-
-
-
-        private void btn_QR_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
-        {
-            StoryboardRevealTop_Reverse.Stop();
-            StoryboardRevealTop.Begin();
-
-            video.Opacity = 100;
-            StartCamera();
-        }
-
-        private void btn_QR_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-        {
-            //If a request is being made, we want to leave the camera visible no matter what
-            //Then if the login was successful, we leave the text box exposed for the user to be able to see whats
-            //happening before the game starts
-            if (!Networking.IsMakingRequest)
-            {
-                StoryboardRevealTop.Stop();
-                StoryboardRevealTop_Reverse.Begin();
-
-                video.Opacity = 0;
-                StopCamera();
-            }
-        }
-
-        private void btn_Rank_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
-        {
-            StoryboardRevealTop_Reverse.Stop();
-            StoryboardRevealTop.Begin();
-        }
-
-        private void btn_Rank_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-        {
-            StoryboardRevealTop.Stop();
-            StoryboardRevealTop_Reverse.Begin();
-        }
-
-        private void btn_Info_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
-        {
-            StoryboardText.Begin();
-            StoryboardText_Reverse.Stop();
-
-            StoryboardRevealTop_Reverse.Stop();
-            StoryboardRevealTop.Begin();
-        }
-
-        private void btn_Info_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-        {
-            StoryboardText.Stop();
-            StoryboardText_Reverse.Begin();
-
-            StoryboardRevealTop.Stop();
-            StoryboardRevealTop_Reverse.Begin();
-        }
-
-        private void ScanMyCode(object sender, EventArgs e)
-        {
-            isScanningGame = false;
-            MessageBox.Show("Please scan the QRCode on your t-shirt");
-        }
-
-
-        private void StopCamera()
-        {
-            Dispatcher.BeginInvoke(() =>
-                {
-                    try
-                    {
-                        _cam.Initialized -= cam_Initialized;
-                        _cam.CancelFocus();
-                        _cam.Dispose();
-                        _timer.Stop();
-
-                        //The camera may be still initalizing while this code is called, so set initializing to false
-                        //in order to prevent it from being stuck initializing forever
-                        camInitializing = false;
-                    }
-                    catch
-                    {
-                        //Throws an exception if the camera hasnt been initialised yet
-                    }
-                });
-        }
-
-        private void StartCamera()
-        {
-            //Start it in a new thread so that the ui isn't blocked
-            Dispatcher.BeginInvoke(() =>
-            {
-                    try
-                    {
-                        if (!camInitializing) //Prevents double initalization of the camera(which throws an exception)
-                        {
-                            camInitializing = true;
-                            _cam = new PhotoCamera();
-
-                            _cam.Initialized += cam_Initialized;
-
-                            _timer.Start();
-
-                            video.Fill = _videoBrush;
-                            _videoBrush.SetSource(_cam);
-                            _videoBrush.RelativeTransform = new CompositeTransform() { CenterX = 0.5, CenterY = 0.5, Rotation = 90 };
-                        }
-                    }
-                    catch
-                    {
-                        //Throws an exception if the camera hasnt been initialised yet
-                    }
-
-                });
-        }
-
-
-        #region JoiningAGame
-
-
-
-        private void OnGetGames()
-        {
-            if (!Networking.FailedRequest)
-            {
-                if (myGame == null)
-                {
-                    MessageBox.Show("There are no games to join at the moment");
-                    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                    btn_ScanGameID.Opacity = 0.5;
+                    video.Opacity = 0;
+                    isScanningGame = false;
+                    //Stop the scanner
+                    _timer.Stop();
+                    MessageBox.Show("You scanned the qrcode for game: " + result.Text);
                 }
             }
             else
             {
-                if (MessageBox.Show("Failed to download the list of games.\nPlease check your internet connection and try again.\n\nWould you like to try again?", "Error", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-                    Networking.GetGames<Game>((o, evt) => OnGetGames());
+                if (QRCodeManager.IsValidQRCode(result.Text))
+                {
+                    playerCode = result.Text;
+                    isPlayerScanned = true;
+                    btn_ScanPlayerID.Background = new SolidColorBrush(Colors.Green);
+
+                    btn_ScanPlayerID.Opacity = 0.5;
+                    video.Opacity = 0;
+                    isScanningPlayer = false;
+                    //Stop the scanner
+                    _timer.Stop();
+                    MessageBox.Show("You scanned the qrcode for player: " + result.Text);
+                }
+            }
+
+            if (isPlayerScanned && isGameScanned)
+            {
+                var extras = new Dictionary<string, object>();
+                extras["qrcode"] = playerCode;
+                if (MessageBox.Show(gameCode.ToString(), "Would you like join the game with id of", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    Networking.JoinGame<QRPlayer>("anon-WP7", gameCode, extras, (o, e) => OnJoinGame(gameCode));
+                }
             }
         }
 
+
+        bool presscomplete = true;
+
+        private void btn_ScanPlayerID_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        {
+            if (presscomplete)
+            {
+                if (!isScanningPlayer)
+                {
+                    btn_ScanPlayerID.Opacity = 1;
+                    video.Opacity = 1;
+                    isScanningPlayer = true;
+                    //Start the scanner
+                    _timer.Start();
+                }
+                else
+                {
+                    btn_ScanPlayerID.Opacity = 0.5;
+                    video.Opacity = 0;
+                    isScanningPlayer = false;
+                    //Stop the scanner
+                    _timer.Stop();
+                }
+                isScanningGame = false;
+                btn_ScanGameID.Opacity = 0.5;
+                presscomplete = false;
+            }
+        }
+
+        private void btn_ScanGameID_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        {
+            if (presscomplete)
+            {
+                if (!isScanningGame)
+                {
+                    btn_ScanGameID.Opacity = 1;
+                    video.Opacity = 1;
+                    isScanningGame = true;
+                    //Start the scanner
+                    _timer.Start();
+                }
+                else
+                {
+                    btn_ScanGameID.Opacity = 0.5;
+                    video.Opacity = 0;
+                    isScanningGame = false;
+                    //Stop the scanner
+                    _timer.Stop();
+                }
+                isScanningPlayer = false;
+                btn_ScanPlayerID.Opacity = 0.5;
+                presscomplete = false;
+            }
+            
+        }
+
+        private void btn_ScanX_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
+        {
+            presscomplete = true;
+        }
+
+       /* private void ScanMyCode(object sender, EventArgs e)
+        {
+            isScanningGame = false;
+            MessageBox.Show("Please scan the QRCode on your t-shirt");
+        }
+        */
+
+        #region JoiningAGame
+
         private void OnJoinGame(int gameid)
         {
+            _timer.Tick -= (o, e) => ScanPreviewBuffer();
             if (!Networking.FailedRequest)
             {
                 myGame = new Game(gameid);
-                _timer.Tick += (o, evt) => CheckGameStarted();
+                _timer.Tick += (o, e) => CheckGameStarted();
+                _timer.Start();
+            }
+            else
+            {
+                switch (Networking.LastError)
+                {
+                    case 409:
+                        isScanningGame = false;
+                        MessageBox.Show("This qrcode has already been used to join this game. Please find another qrcode or game!");
+                        break;
+                }
             }
         }
 
@@ -342,15 +285,15 @@ namespace QRzar
             if (myGame.started || true)
             {
                 //No need to check that its started anymore
-                _timer.Tick -= (o, e) => CheckGameStarted();
+                _timer.Tick -= (o, evt) => CheckGameStarted();
+                _timer.Stop();
 
                 //The game has started, so move into the game page
                 NavigationService.Navigate(new Uri("/GamePage.xaml?gameid=" + myGame.id, UriKind.Relative));
             }
             else
             {
-                Networking.GetGameById<Game>(myGame.id,
-                    (o, e) => OnGetGame());
+                Networking.GetGameById<Game>(myGame.id, (o, e) => OnGetGame());
             }
         }
 

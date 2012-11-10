@@ -14,32 +14,57 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False" FlowDirection="LeftToRight">
 	<phone:PhoneApplicationPage.Resources>
+		<Storyboard x:Name="StoryboardStatusText">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="lbl_Status">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0.995"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="lbl_Status">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="8.992"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="9"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
 		<Storyboard x:Name="StoryboardBonusText">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="lbl_ScoreBonus">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="lbl_Bonus">
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0.995"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="lbl_Bonus">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="8.992"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="9"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</phone:PhoneApplicationPage.Resources>
     
             <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-                <Grid>
-                	</Grid>
 
-                <Grid d:LayoutOverrides="Width, Height">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Rectangle x:Name="video" Margin="20,87,20,276" Fill="White"/>
-            <Button Height="156" Margin="227,0,62,26" VerticalAlignment="Bottom" BorderBrush="Transparent" ManipulationStarted="Button_ManipulationStarted" ManipulationCompleted="Button_ManipulationCompleted">
+        <Grid d:LayoutOverrides="Width, Height">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle x:Name="video" Margin="0" Fill="White"/>
+            <Image Margin="0" Source="hudbg.png" Stretch="Fill"/>
+            <TextBlock x:Name="lbl_Status" Height="30" Margin="39,550,61,0" VerticalAlignment="Top" Opacity="0" RenderTransformOrigin="0.5,0.5" >
+            	<TextBlock.RenderTransform>
+            		<CompositeTransform/>
+            	</TextBlock.RenderTransform>
+            </TextBlock>
+            <Rectangle x:Name="Shader" Fill="#FFC80900" Margin="0" Stroke="Black" Opacity="0"/>
+            <Button x:Name="btn_Scan" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="145" Width="180" Margin="0,0,151,78" d:LayoutOverrides="HorizontalAlignment" BorderBrush="{x:Null}" ManipulationStarted="Button_ManipulationStarted" ManipulationCompleted="Button_ManipulationCompleted">
                 <Button.Background>
-                    <ImageBrush ImageSource="ButtonQR.png"/>
+                    <ImageBrush ImageSource="InGameScanButton.png" Stretch="Fill"/>
                 </Button.Background>
             </Button>
-            <TextBlock x:Name="lbl_Team1Score" Height="30" HorizontalAlignment="Left" Margin="145,550,0,0" Text="" VerticalAlignment="Top" Width="239" />
-            <TextBlock x:Name="lbl_Team2Score"  Height="30" HorizontalAlignment="Left" Margin="145,586,0,0" Text="" VerticalAlignment="Top" Width="239" />
-            <TextBlock x:Name="lbl_ScoreBonus" Height="30" HorizontalAlignment="Left" Margin="39,550,0,0" Text="" VerticalAlignment="Top" Width="100" Opacity="0" />
-        </Grid>
+
+            <TextBlock x:Name="lbl_Team1Score" Height="30" HorizontalAlignment="Left" Margin="344,8,0,0" Text="" VerticalAlignment="Top" Width="114" FontSize="26.667" TextAlignment="Right" />
+            <TextBlock x:Name="lbl_Team2Score"  Height="30" HorizontalAlignment="Left" Margin="344,38,0,0" Text="" VerticalAlignment="Top" Width="114" d:LayoutOverrides="VerticalAlignment" FontSize="26.667" TextAlignment="Right" />
+            <TextBlock x:Name="lbl_TimeRemaining" Height="30" HorizontalAlignment="Center" Margin="0,26,0,0" Text="" VerticalAlignment="Top" Width="152" d:LayoutOverrides="VerticalAlignment" TextAlignment="Center" />
+            <TextBlock x:Name="lbl_Bonus" Margin="0, 0, 0, 70" VerticalAlignment="Center" Opacity="0" RenderTransformOrigin="0.5,0.5" FontSize="72" HorizontalAlignment="Center" >
+            	<TextBlock.RenderTransform>
+            		<CompositeTransform/>
+            	</TextBlock.RenderTransform>
+            </TextBlock>
+            </Grid>
     </Grid>
 </phone:PhoneApplicationPage>

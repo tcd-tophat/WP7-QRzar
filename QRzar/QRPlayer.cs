@@ -15,6 +15,7 @@ namespace QRzar
     public class QRPlayer : Player
     {
         public string qrcode;
-        public char team;
+        public bool alive;
+        public Team team;
     }
 }

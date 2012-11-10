@@ -54,9 +54,9 @@
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Networking">
-      <HintPath>..\..\..\WP7-Networking\Networking\Bin\Debug\Networking.dll</HintPath>
+      <HintPath>..\..\WP7-Networking\Networking\Bin\Debug\Networking.dll</HintPath>
     </Reference>
-    <Reference Include="Silverlight_ZXing_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Net" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -65,6 +65,9 @@
     <Reference Include="mscorlib.extensions" />
     <Reference Include="WP7_Barcode_Library">
       <HintPath>..\..\..\Desktop\WP7_Barcode_Library.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXingVer1_7">
+      <HintPath>..\..\Desktop\ZXing7_1Port\Bin\Debug\ZXingVer1_7.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +81,7 @@
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QRGame.cs" />
     <Compile Include="QRPlayer.cs" />
     <Compile Include="SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
@@ -98,16 +102,28 @@
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Background.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Images\appbar.back.rest.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\appbar.check.rest.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SplashScreenImage.jpg" />
+    <Content Include="LaunchBrightBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LaunchDarkBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LaunchQRCode.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="LaunchTopSkin.png" />
+    <Content Include="LaunchButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SplashScreenImage.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="ButtonRank.png" />
     <Content Include="ButtonInfo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -115,12 +131,13 @@
     <Content Include="ButtonQR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ImageQRZar.png">
+    <Content Include="Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Join_Text.png" />
+    <Resource Include="hudbg.png" />
+    <Resource Include="InGameScanButton.png" />
+    <Resource Include="powerupButton.png" />
     <Resource Include="Rank_text.png" />
-    <Resource Include="redbanner.png" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml">
